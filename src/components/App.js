@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/home";
-import Flashcards from "./components/flash_cards";
-import Contact from "./components/contact_me";
-import NavigationBar from "./components/Navigation_Bar";
-import "./assets/App.css";
+import Home from "./home";
+import Flashcards from "./flash_cards";
+import Contact from "./contact_me";
+import NavigationBar from "./Navigation_Bar";
+import "../assets/App.css";
 
 const App = () => {
   return (

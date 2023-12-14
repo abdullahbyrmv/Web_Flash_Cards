@@ -1,0 +1,16 @@
+.home-container {
+  text-align: center;
+}
+
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 300px);
+  gap: 20px;
+  justify-content: center;
+}
+
+.project-div {
+  border: 3px solid #386a20;
+  border-radius: 5px;
+  padding: 10px;
+}
