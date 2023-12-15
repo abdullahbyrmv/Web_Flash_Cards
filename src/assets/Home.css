@@ -2,6 +2,24 @@
   text-align: center;
 }
 
+.about-me {
+  text-align: center;
+  margin-top: 65px;
+}
+
+.about-me h3 {
+  font-size: 30px;
+}
+
+.about-me p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.about-me .my-projects {
+  font-size: 24px;
+}
+
 .projects {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
@@ -10,7 +28,41 @@
 }
 
 .project-div {
+  position: relative;
   border: 3px solid #386a20;
   border-radius: 5px;
-  padding: 10px;
+  padding: 20px;
+  transition: background-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
+}
+
+.project-title {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.project-description {
+  font-size: 20px;
+}
+
+.project-div:hover {
+  background-color: #92cc74;
+}
+
+.view-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  background-color: #386a20;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.view-button:hover {
+  background-color: #4d8c2b;
 }
