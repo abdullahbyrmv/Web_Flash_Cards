@@ -9,7 +9,7 @@ const projectsInfo = [
     id: 2,
     title: "Dummy JSON",
     description:
-      "Fetches data from dummyjson API about products and applies search, filter, pagination and etc.",
+      "Fetches data from dummyjson API about products and applies search, filter, pagination and etc",
     source: "https://abdullahbyrmv.github.io/Web_Assignment_2",
   },
   {
