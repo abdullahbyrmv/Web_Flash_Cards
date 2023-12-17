@@ -8,12 +8,18 @@ const Flashcards = () => {
     fetch("http://localhost:3001/flashcards")
       .then((response) => response.json())
       .then((flashcards) => {
-        setFlashcards(
-          flashcards.map((card) => ({
-            ...card,
-            isFlipped: false,
-          }))
-        );
+        const sortedFlashcards = flashcards
+          .map((card) => ({ ...card, isFlipped: false }))
+          .sort((card1, card2) => {
+            const card1_modificationDate = new Date(
+              formatModificationDate(card1.modificationDate)
+            ).getTime();
+            const card2_modificationDate = new Date(
+              formatModificationDate(card2.modificationDate)
+            ).getTime();
+            return card2_modificationDate - card1_modificationDate;
+          });
+        setFlashcards(sortedFlashcards);
       })
       .catch((error) => {
         window.alert("Error fetching data: " + error.message);
@@ -34,6 +40,23 @@ const Flashcards = () => {
     setFlashcards(updatedFlashcards);
   };
 
+  const padDate = (dateField) => {
+    if (dateField < 10) {
+      return `0${dateField}`;
+    } else {
+      return `${dateField}`;
+    }
+  };
+
+  const formatModificationDate = (modificationDate) => {
+    const date = new Date(modificationDate);
+    return `${date.getFullYear()}-${padDate(date.getMonth() + 1)}-${padDate(
+      date.getDate()
+    )} ${padDate(date.getHours())}:${padDate(date.getMinutes())}:${padDate(
+      date.getSeconds()
+    )}`;
+  };
+
   return (
     <div className="flashcards-container">
       <div className="cards-grid">
@@ -50,7 +73,7 @@ const Flashcards = () => {
               >
                 <p>{card.question}</p>
                 <p>
-                  Last Modified: {new Date(card.modificationDate).toString()}
+                  Last Modified: {formatModificationDate(card.modificationDate)}
                 </p>
                 <p>Status: {card.status}</p>
               </div>
