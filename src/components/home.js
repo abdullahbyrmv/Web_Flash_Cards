@@ -23,7 +23,7 @@ const Home = () => {
       </div>
       <div className="projects">
         {projects.map((project) => (
-          <div className="project-div">
+          <div key={project.id} className="project-div">
             <h4 className="project-title">{project.title}</h4>
             <p className="project-description">{project.description}</p>
             <a href={project.source} target="_blank" rel="noopener noreferrer">

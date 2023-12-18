@@ -2,66 +2,87 @@
   "flashcards": [
     {
       "id": 1,
-      "question": "What is the capital of France?",
-      "answer": "Paris",
+      "question": "What does TCP stand for?",
+      "answer": "Transmission Control Protocol.",
       "modificationDate": "2022-12-15T10:30:00Z",
       "status": "Noted"
     },
     {
       "id": 2,
-      "question": "Who painted the Mona Lisa?",
-      "answer": "Leonardo da Vinci",
+      "question": "Define UDP.",
+      "answer": "User Datagram Protocol is a connectionless protocol without error checking.",
       "modificationDate": "2023-12-14T09:45:00Z",
       "status": "Learned"
     },
     {
       "id": 3,
-      "question": "What year did World War II end?",
-      "answer": "1945",
+      "question": "What is the main difference between TCP and UDP?",
+      "answer": "TCP provides reliable, ordered, and error-checked delivery of data, while UDP does not guarantee delivery and is faster.",
       "modificationDate": "2023-12-13T14:00:00Z",
       "status": "Want to Learn"
     },
     {
       "id": 4,
-      "question": "What is the largest planet in our solar system?",
-      "answer": "Jupiter",
+      "question": "What does TCP use to guarantee reliable data transmission?",
+      "answer": "TCP uses sequencing, acknowledgments, and retransmissions to ensure reliable data delivery.",
       "modificationDate": "2023-12-12T11:20:00Z",
       "status": "Learned"
     },
     {
       "id": 5,
-      "question": "Who wrote the play 'Hamlet'?",
-      "answer": "William Shakespeare",
+      "question": "How does UDP differ from TCP in terms of overhead?",
+      "answer": "UDP has less overhead because it lacks features like sequencing, acknowledgment, and error-checking mechanisms present in TCP.",
       "modificationDate": "2023-12-11T08:30:00Z",
       "status": "Noted"
     },
     {
       "id": 6,
-      "question": "What is the capital of Japan?",
-      "answer": "Tokyo",
+      "question": "Which protocol is better suited for real-time applications like video streaming, TCP or UDP?",
+      "answer": "UDP is often preferred due to its lower latency and faster transmission, suitable for real-time applications.",
       "modificationDate": "2023-12-10T15:45:00Z",
       "status": "Learned"
     },
     {
       "id": 7,
-      "question": "What is my name?",
-      "answer": "Someone",
+      "question": "Does TCP or UDP provide more robust error handling?",
+      "answer": "TCP provides more robust error handling through its acknowledgment and retransmission mechanisms.",
       "modificationDate": "2023-12-16T10:00:02Z",
       "status": "Noted"
     },
     {
       "id": 8,
-      "question": "What is my major?",
-      "answer": "IT",
+      "question": "In TCP, how are out-of-order segments handled?",
+      "answer": "TCP reorders out-of-order segments before delivering them to the application layer.",
       "modificationDate": "2021-10-09T10:00:02Z",
       "status": "Learned"
     },
     {
       "id": 9,
-      "question": "What is my age?",
-      "answer": "20",
+      "question": "What type of applications might benefit from using UDP over TCP?",
+      "answer": "Applications that prioritize speed and can tolerate occasional data loss, such as online multiplayer games or real-time audio/video conferencing, may benefit from UDP.",
       "modificationDate": "2022-11-14T10:00:02Z",
       "status": "Want to Learn"
+    },
+    {
+      "id": 10,
+      "question": "What is PDU?",
+      "status": "Learned",
+      "answer": "Protocol Data Unit",
+      "modificationDate": "2023-12-18T15:29:58.003Z"
+    },
+    {
+      "id": 11,
+      "question": "What is OSI?",
+      "status": "Noted",
+      "answer": "Open Systems Interconnection",
+      "modificationDate": "2023-12-18T15:38:43.608Z"
+    },
+    {
+      "id": 12,
+      "question": "What is IP",
+      "status": "Learned",
+      "answer": "Internet Protocol",
+      "modificationDate": "2023-12-18T15:51:52.024Z"
     }
   ]
 }
