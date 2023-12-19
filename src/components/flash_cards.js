@@ -9,6 +9,7 @@ const Flashcards = () => {
     status: "",
     answer: "",
   });
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchFlashcards();
@@ -36,16 +37,16 @@ const Flashcards = () => {
       });
   };
 
-  const handleFrontClick = (index) => {
-    const updatedFlashcards = flashcards.map((card, i) =>
-      i === index ? { ...card, isFlipped: !card.isFlipped } : card
+  const handleFrontClick = (id) => {
+    const updatedFlashcards = flashcards.map((card) =>
+      card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
     );
     setFlashcards(updatedFlashcards);
   };
 
-  const handleBackClick = (index) => {
-    const updatedFlashcards = flashcards.map((card, i) =>
-      i === index ? { ...card, isFlipped: !card.isFlipped } : card
+  const handleBackClick = (id) => {
+    const updatedFlashcards = flashcards.map((card) =>
+      card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
     );
     setFlashcards(updatedFlashcards);
   };
@@ -117,11 +118,30 @@ const Flashcards = () => {
     )}`;
   };
 
+  const displayedCards = flashcards.filter((card) => {
+    const { question, status, answer } = card;
+    const search_value = searchText.toLowerCase();
+    return (
+      question.toLowerCase().includes(search_value) ||
+      status.toLowerCase().includes(search_value) ||
+      answer.toLowerCase().includes(search_value)
+    );
+  });
+
   return (
     <div className="flashcards-container">
-      <button className="new-card-button" onClick={handleOpenPopup}>
-        Create New Card
-      </button>
+      <div className="functionalities">
+        <button className="new-card-button" onClick={handleOpenPopup}>
+          Create New Card
+        </button>
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search by question, status or answer."
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
+        />
+      </div>
       {showPopup && (
         <div className="popup">
           <div className="popup-content">
@@ -161,11 +181,11 @@ const Flashcards = () => {
         </div>
       )}
       <div className="cards-grid">
-        {flashcards.map((card, index) => (
+        {displayedCards.map((card, index) => (
           <div
             key={card.id}
             className={`card ${card.isFlipped ? "flipped" : ""}`}
-            onClick={() => handleFrontClick(index)}
+            onClick={() => handleFrontClick(card.id)}
           >
             <div className="card-inner">
               <div
@@ -182,7 +202,7 @@ const Flashcards = () => {
                 className="card-back"
                 style={{ opacity: card.isFlipped ? 1 : 0 }}
                 onClick={() => {
-                  handleBackClick(index);
+                  handleBackClick(card.id);
                 }}
               >
                 <p>{card.answer}</p>

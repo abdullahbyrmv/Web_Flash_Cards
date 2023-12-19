@@ -83,6 +83,27 @@
       "status": "Learned",
       "answer": "Internet Protocol",
       "modificationDate": "2023-12-18T15:51:52.024Z"
+    },
+    {
+      "id": 13,
+      "question": "How many layers do OSI have?",
+      "status": "Learned",
+      "answer": "7",
+      "modificationDate": "2023-12-18T19:17:49.166Z"
+    },
+    {
+      "id": 14,
+      "question": "How many layers do TCP/IP have?",
+      "status": "Noted",
+      "answer": "4",
+      "modificationDate": "2023-12-18T19:22:34.212Z"
+    },
+    {
+      "id": 15,
+      "question": "3rd Layer in TCP/IP",
+      "status": "Learned",
+      "answer": "Internet ",
+      "modificationDate": "2023-12-19T05:56:36.999Z"
     }
   ]
 }
