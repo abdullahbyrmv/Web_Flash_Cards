@@ -6,12 +6,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 200px;
 }
 
 .search-bar {
   width: 300px;
-  margin-right: 300px;
+  margin-left: 10px;
+}
+
+.select-bar {
   margin-left: 10px;
 }
 
@@ -152,6 +154,7 @@
 }
 
 .front-buttons {
+  display: none;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -165,4 +168,38 @@
   z-index: 1;
   margin-left: 90px;
   margin-bottom: 10px;
+}
+
+.edit-button,
+.delete-button {
+  background-color: #386a20;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 12px 24px;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.front-buttons {
+  display: none;
+  position: absolute;
+  transform: translateX(-50%);
+  width: fit-content;
+  padding: 8px 16px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 1;
+  margin-left: 155px;
+}
+
+.edit-button:hover,
+.delete-button:hover {
+  background-color: #4d8c2b;
+}
+
+.card:hover .front-buttons {
+  display: flex;
 }

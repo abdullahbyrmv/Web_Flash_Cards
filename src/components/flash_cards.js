@@ -158,6 +158,7 @@ const Flashcards = () => {
           onChange={(e) => setSearchText(e.target.value)}
         />
         <select
+          className="select-bar"
           value={selectedStatus}
           onChange={(e) => setSelectedStatus(e.target.value)}
         >
