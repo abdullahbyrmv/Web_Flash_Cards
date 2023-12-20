@@ -10,6 +10,7 @@ const Flashcards = () => {
     answer: "",
   });
   const [searchText, setSearchText] = useState("");
+  const [selectedStatus, setSelectedStatus] = useState("All Statuses");
 
   useEffect(() => {
     fetchFlashcards();
@@ -120,13 +121,28 @@ const Flashcards = () => {
 
   const displayedCards = flashcards.filter((card) => {
     const { question, status, answer } = card;
-    const search_value = searchText.toLowerCase();
-    return (
-      question.toLowerCase().includes(search_value) ||
-      status.toLowerCase().includes(search_value) ||
-      answer.toLowerCase().includes(search_value)
-    );
+    const searchValue = searchText.toLowerCase();
+
+    if (selectedStatus !== "All Statuses") {
+      return (
+        (question.toLowerCase().includes(searchValue) ||
+          status.toLowerCase().includes(searchValue) ||
+          answer.toLowerCase().includes(searchValue)) &&
+        status.toLowerCase() === selectedStatus.toLowerCase()
+      );
+    } else {
+      return (
+        question.toLowerCase().includes(searchValue) ||
+        status.toLowerCase().includes(searchValue) ||
+        answer.toLowerCase().includes(searchValue)
+      );
+    }
   });
+
+  const handleButtonClick = (e, cardId) => {
+    e.stopPropagation();
+    console.log(cardId);
+  };
 
   return (
     <div className="flashcards-container">
@@ -141,6 +157,15 @@ const Flashcards = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
+        <select
+          value={selectedStatus}
+          onChange={(e) => setSelectedStatus(e.target.value)}
+        >
+          <option>All Statuses</option>
+          <option>Learned</option>
+          <option>Want to Learn</option>
+          <option>Noted</option>
+        </select>
       </div>
       {showPopup && (
         <div className="popup">
@@ -192,11 +217,26 @@ const Flashcards = () => {
                 className="card-front"
                 style={{ opacity: card.isFlipped ? 0 : 1 }}
               >
-                <p>{card.question}</p>
-                <p>
+                <p className="question">{card.question}</p>
+                <p className="status">Status: {card.status}</p>
+                <p className="date">
                   Last Modified: {formatModificationDate(card.modificationDate)}
                 </p>
-                <p>Status: {card.status}</p>
+
+                <div className="front-buttons">
+                  <button
+                    className="edit-button"
+                    onClick={(e) => handleButtonClick(e, card.id)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={(e) => handleButtonClick(e, card.id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
               <div
                 className="card-back"

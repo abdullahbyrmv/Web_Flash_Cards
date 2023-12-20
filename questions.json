@@ -104,6 +104,20 @@
       "status": "Learned",
       "answer": "Internet ",
       "modificationDate": "2023-12-19T05:56:36.999Z"
+    },
+    {
+      "id": 16,
+      "question": "Which layer device the Router is?",
+      "status": "Learned",
+      "answer": "3",
+      "modificationDate": "2023-12-20T05:11:21.211Z"
+    },
+    {
+      "id": 17,
+      "question": "Which layer device the Switch is?",
+      "status": "Noted",
+      "answer": "Could be 2 or 3",
+      "modificationDate": "2023-12-20T05:55:54.668Z"
     }
   ]
 }

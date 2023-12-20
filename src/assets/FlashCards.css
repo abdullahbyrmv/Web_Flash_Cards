@@ -70,7 +70,7 @@
   border: 4px solid #386a20;
   position: relative;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   background-color: #92cc74;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -79,18 +79,20 @@
 }
 
 .card-front p {
-  margin-top: 50px;
+  text-align: center;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: scale(1.05);
 }
 
-.card .card-inner {
+.card-inner {
   width: 100%;
   height: 100%;
   transition: transform 0.6s;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   right: 0;
@@ -100,21 +102,30 @@
   align-items: center;
 }
 
-.card .card-front,
-.card .card-back {
+.card-front,
+.card-back {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  justify-content: space-between;
 }
 
 .card .card-front {
   background-color: #b7f497;
   color: #333;
+  position: relative;
+  word-wrap: break-word;
+  overflow: hidden;
+}
+
+.question {
+  margin-top: 25px;
+}
+
+.date {
+  margin-bottom: 75px;
 }
 
 .card .card-back {
@@ -124,7 +135,6 @@
   padding: 20px;
   box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -139,4 +149,20 @@
 .card.flipped .card-back {
   transform: rotateY(180deg);
   color: #333;
+}
+
+.front-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 8px 16px;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1;
+  margin-left: 90px;
+  margin-bottom: 10px;
 }
