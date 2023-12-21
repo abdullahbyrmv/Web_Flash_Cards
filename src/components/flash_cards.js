@@ -139,9 +139,31 @@ const Flashcards = () => {
     }
   });
 
-  const handleButtonClick = (e, cardId) => {
+  const handleDelete = (e, id) => {
     e.stopPropagation();
-    console.log(cardId);
+
+    const updatedFlashcards = flashcards.filter((card) => card.id !== id);
+
+    fetch(`http://localhost:3001/flashcards/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete");
+        }
+        return response.json();
+      })
+      .then(() => {
+        setFlashcards(updatedFlashcards);
+      })
+      .catch((error) => {
+        window.alert("Error deleting card: " + error.message);
+      });
+  };
+
+  const handleEdit = (e, id) => {
+    e.stopPropagation();
+    console.log(id);
   };
 
   return (
@@ -227,13 +249,13 @@ const Flashcards = () => {
                 <div className="front-buttons">
                   <button
                     className="edit-button"
-                    onClick={(e) => handleButtonClick(e, card.id)}
+                    onClick={(e) => handleEdit(e, card.id)}
                   >
                     Edit
                   </button>
                   <button
                     className="delete-button"
-                    onClick={(e) => handleButtonClick(e, card.id)}
+                    onClick={(e) => handleDelete(e, card.id)}
                   >
                     Delete
                   </button>
