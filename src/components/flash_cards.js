@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Functionalities from "./functionalities";
+import Popup from "./popup";
+import Cards from "./cards";
 import "../assets/FlashCards.css";
 
 const Flashcards = () => {
@@ -121,7 +124,7 @@ const Flashcards = () => {
 
   const displayedCards = flashcards.filter((card) => {
     const { question, status, answer } = card;
-    const searchValue = searchText.toLowerCase();
+    const searchValue = searchText.trim().toLowerCase();
 
     if (selectedStatus !== "All Statuses") {
       return (
@@ -161,119 +164,34 @@ const Flashcards = () => {
       });
   };
 
-  const handleEdit = (e, id) => {
+  const handleEdit = (e) => {
     e.stopPropagation();
-    console.log(id);
   };
 
   return (
     <div className="flashcards-container">
-      <div className="functionalities">
-        <button className="new-card-button" onClick={handleOpenPopup}>
-          Create New Card
-        </button>
-        <input
-          className="search-bar"
-          type="text"
-          placeholder="Search by question, status or answer."
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <select
-          className="select-bar"
-          value={selectedStatus}
-          onChange={(e) => setSelectedStatus(e.target.value)}
-        >
-          <option>All Statuses</option>
-          <option>Learned</option>
-          <option>Want to Learn</option>
-          <option>Noted</option>
-        </select>
-      </div>
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <input
-              type="text"
-              name="question"
-              value={newCardData.question}
-              onChange={handleInputChange}
-              placeholder="Enter question"
-              required
-            />
-            <input
-              type="text"
-              name="status"
-              value={newCardData.status}
-              onChange={handleInputChange}
-              placeholder="Enter status"
-              required
-            />
-            <input
-              type="text"
-              name="answer"
-              value={newCardData.answer}
-              onChange={handleInputChange}
-              placeholder="Enter answer"
-              required
-            />
-            <div className="popup-buttons">
-              <button className="new-card-button" onClick={handleCreateNewCard}>
-                Submit
-              </button>
-              <button className="new-card-button" onClick={handleClosePopup}>
-                Close
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-      <div className="cards-grid">
-        {displayedCards.map((card, index) => (
-          <div
-            key={card.id}
-            className={`card ${card.isFlipped ? "flipped" : ""}`}
-            onClick={() => handleFrontClick(card.id)}
-          >
-            <div className="card-inner">
-              <div
-                className="card-front"
-                style={{ opacity: card.isFlipped ? 0 : 1 }}
-              >
-                <p className="question">{card.question}</p>
-                <p className="status">Status: {card.status}</p>
-                <p className="date">
-                  Last Modified: {formatModificationDate(card.modificationDate)}
-                </p>
-
-                <div className="front-buttons">
-                  <button
-                    className="edit-button"
-                    onClick={(e) => handleEdit(e, card.id)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={(e) => handleDelete(e, card.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-              <div
-                className="card-back"
-                style={{ opacity: card.isFlipped ? 1 : 0 }}
-                onClick={() => {
-                  handleBackClick(card.id);
-                }}
-              >
-                <p>{card.answer}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Functionalities
+        handleOpenPopup={handleOpenPopup}
+        setSearchText={setSearchText}
+        setSelectedStatus={setSelectedStatus}
+        selectedStatus={selectedStatus}
+        searchText={searchText}
+      />
+      <Popup
+        showPopup={showPopup}
+        handleClosePopup={handleClosePopup}
+        handleInputChange={handleInputChange}
+        handleCreateNewCard={handleCreateNewCard}
+        newCardData={newCardData}
+      />
+      <Cards
+        displayedCards={displayedCards}
+        handleFrontClick={handleFrontClick}
+        handleBackClick={handleBackClick}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+        formatModificationDate={formatModificationDate}
+      />
     </div>
   );
 };
