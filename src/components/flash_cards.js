@@ -14,6 +14,8 @@ const Flashcards = () => {
   });
   const [searchText, setSearchText] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All Statuses");
+  const [editingCardId, setEditingCardId] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     fetchFlashcards();
@@ -42,17 +44,21 @@ const Flashcards = () => {
   };
 
   const handleFrontClick = (id) => {
-    const updatedFlashcards = flashcards.map((card) =>
-      card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
-    );
-    setFlashcards(updatedFlashcards);
+    if (!isEditing) {
+      const updatedFlashcards = flashcards.map((card) =>
+        card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
+      );
+      setFlashcards(updatedFlashcards);
+    }
   };
 
   const handleBackClick = (id) => {
-    const updatedFlashcards = flashcards.map((card) =>
-      card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
-    );
-    setFlashcards(updatedFlashcards);
+    if (!isEditing) {
+      const updatedFlashcards = flashcards.map((card) =>
+        card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
+      );
+      setFlashcards(updatedFlashcards);
+    }
   };
 
   const handleOpenPopup = () => {
@@ -164,8 +170,51 @@ const Flashcards = () => {
       });
   };
 
-  const handleEdit = (e) => {
+  const handleEdit = (e, id) => {
     e.stopPropagation();
+    setEditingCardId(id);
+  };
+
+  const handleInputChangeEdit = (e) => {
+    e.stopPropagation();
+    const { name, value } = e.target;
+    setNewCardData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmitEdit = (e) => {
+    e.stopPropagation();
+
+    const editedCard = {
+      ...flashcards.find((card) => card.id === editingCardId),
+      ...newCardData,
+      modificationDate: new Date().toISOString(),
+    };
+
+    const { isFlipped, ...editedCardInfo } = editedCard;
+
+    fetch(`http://localhost:3001/flashcards/${editingCardId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(editedCardInfo),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to update");
+        }
+        return response.json();
+      })
+      .then(() => {
+        fetchFlashcards();
+        setEditingCardId(null);
+      })
+      .catch((error) => {
+        window.alert("Error updating card: " + error.message);
+      });
   };
 
   return (
@@ -189,6 +238,11 @@ const Flashcards = () => {
         handleFrontClick={handleFrontClick}
         handleBackClick={handleBackClick}
         handleEdit={handleEdit}
+        handleSubmitEdit={handleSubmitEdit}
+        editingCardId={editingCardId}
+        newCardData={newCardData}
+        setIsEditing={setIsEditing}
+        handleInputChangeEdit={handleInputChangeEdit}
         handleDelete={handleDelete}
         formatModificationDate={formatModificationDate}
       />
