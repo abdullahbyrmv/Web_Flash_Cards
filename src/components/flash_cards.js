@@ -248,6 +248,8 @@ const Flashcards = () => {
         setSelectedStatus={setSelectedStatus}
         selectedStatus={selectedStatus}
         searchText={searchText}
+        setFlashcards={setFlashcards}
+        flashcards={flashcards}
       />
       <Popup
         showPopup={showPopup}
