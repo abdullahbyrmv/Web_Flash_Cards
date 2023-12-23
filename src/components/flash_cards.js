@@ -12,6 +12,11 @@ const Flashcards = () => {
     status: "",
     answer: "",
   });
+  const [editedCardData, setEditedCardData] = useState({
+    question: "",
+    status: "",
+    answer: "",
+  });
   const [searchText, setSearchText] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All Statuses");
   const [editingCardId, setEditingCardId] = useState(null);
@@ -83,6 +88,14 @@ const Flashcards = () => {
   };
 
   const handleCreateNewCard = () => {
+    if (
+      newCardData.question.trim() === "" ||
+      newCardData.status.trim() === "" ||
+      newCardData.answer.trim() === ""
+    ) {
+      window.alert("Please fill in all fields");
+      return;
+    }
     const newCard = {
       id: flashcards.length + 1,
       ...newCardData,
@@ -105,6 +118,11 @@ const Flashcards = () => {
       .then(() => {
         fetchFlashcards();
         setShowPopup(false);
+        setNewCardData({
+          question: "",
+          status: "",
+          answer: "",
+        });
       })
       .catch((error) => {
         window.alert("Error adding new card:" + error.message);
@@ -170,15 +188,20 @@ const Flashcards = () => {
       });
   };
 
-  const handleEdit = (e, id) => {
+  const handleEdit = (e, id, question, status, answer) => {
     e.stopPropagation();
     setEditingCardId(id);
+    setEditedCardData({
+      question: question,
+      status: status,
+      answer: answer,
+    });
   };
 
   const handleInputChangeEdit = (e) => {
     e.stopPropagation();
     const { name, value } = e.target;
-    setNewCardData((prevData) => ({
+    setEditedCardData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -189,7 +212,7 @@ const Flashcards = () => {
 
     const editedCard = {
       ...flashcards.find((card) => card.id === editingCardId),
-      ...newCardData,
+      ...editedCardData,
       modificationDate: new Date().toISOString(),
     };
 
@@ -240,7 +263,7 @@ const Flashcards = () => {
         handleEdit={handleEdit}
         handleSubmitEdit={handleSubmitEdit}
         editingCardId={editingCardId}
-        newCardData={newCardData}
+        editedCardData={editedCardData}
         setIsEditing={setIsEditing}
         handleInputChangeEdit={handleInputChangeEdit}
         handleDelete={handleDelete}

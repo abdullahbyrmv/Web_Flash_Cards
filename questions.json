@@ -1,3 +1,11 @@
 {
-  "flashcards": []
+  "flashcards": [
+    {
+      "id": 1,
+      "question": "Which color is this?",
+      "status": "Want to Learn",
+      "answer": "Orange",
+      "modificationDate": "2023-12-23T08:22:32.166Z"
+    }
+  ]
 }

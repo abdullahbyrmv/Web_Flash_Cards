@@ -7,7 +7,7 @@ const Cards = ({
   handleEdit,
   handleSubmitEdit,
   editingCardId,
-  newCardData,
+  editedCardData,
   handleInputChangeEdit,
   setIsEditing,
   handleDelete,
@@ -15,7 +15,7 @@ const Cards = ({
 }) => {
   return (
     <div className="cards-grid">
-      {displayedCards.map((card, index) => (
+      {displayedCards.map((card) => (
         <div
           key={card.id}
           className={`card ${card.isFlipped ? "flipped" : ""}`}
@@ -27,7 +27,7 @@ const Cards = ({
                 <input
                   type="text"
                   name="question"
-                  value={newCardData.question}
+                  value={editedCardData.question}
                   onChange={(e) => {
                     handleInputChangeEdit(e);
                     setIsEditing(true);
@@ -38,7 +38,7 @@ const Cards = ({
                 <input
                   type="text"
                   name="status"
-                  value={newCardData.status}
+                  value={editedCardData.status}
                   onChange={(e) => {
                     handleInputChangeEdit(e);
                     setIsEditing(true);
@@ -48,7 +48,7 @@ const Cards = ({
                 />
                 <textarea
                   name="answer"
-                  value={newCardData.answer}
+                  value={editedCardData.answer}
                   onChange={(e) => {
                     handleInputChangeEdit(e);
                     setIsEditing(true);
@@ -74,7 +74,15 @@ const Cards = ({
                   <div className="front-buttons">
                     <button
                       className="edit-button"
-                      onClick={(e) => handleEdit(e, card.id)}
+                      onClick={(e) =>
+                        handleEdit(
+                          e,
+                          card.id,
+                          card.question,
+                          card.status,
+                          card.answer
+                        )
+                      }
                     >
                       Edit
                     </button>
