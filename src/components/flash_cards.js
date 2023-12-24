@@ -90,14 +90,20 @@ const Flashcards = () => {
   const handleCreateNewCard = () => {
     if (
       newCardData.question.trim() === "" ||
-      newCardData.status.trim() === "" ||
       newCardData.answer.trim() === ""
     ) {
       window.alert("Please fill in all fields");
       return;
     }
+    if (newCardData.status.trim() === "") {
+      window.alert("Please Select a Status");
+      return;
+    }
+
+    const maxId = findMaxId(flashcards);
+
     const newCard = {
-      id: flashcards.length + 1,
+      id: maxId + 1,
       ...newCardData,
       modificationDate: new Date().toISOString(),
     };
@@ -144,6 +150,12 @@ const Flashcards = () => {
     )} ${padDate(date.getHours())}:${padDate(date.getMinutes())}:${padDate(
       date.getSeconds()
     )}`;
+  };
+
+  const findMaxId = (cards) => {
+    return cards.reduce((maxId, card) => {
+      return card.id > maxId ? card.id : maxId;
+    }, 0);
   };
 
   const displayedCards = flashcards.filter((card) => {

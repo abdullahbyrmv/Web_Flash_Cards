@@ -1,4 +1,6 @@
 import React from "react";
+import EditForm from "./edit_form";
+import "../assets/Cards.css";
 
 const Cards = ({
   displayedCards,
@@ -13,101 +15,76 @@ const Cards = ({
   handleDelete,
   formatModificationDate,
 }) => {
-  return (
-    <div className="cards-grid">
-      {displayedCards.map((card) => (
-        <div
-          key={card.id}
-          className={`card ${card.isFlipped ? "flipped" : ""}`}
-          onClick={() => handleFrontClick(card.id)}
-        >
-          <div className="card-inner">
-            {editingCardId === card.id ? (
-              <div className="edit-form">
-                <input
-                  type="text"
-                  name="question"
-                  value={editedCardData.question}
-                  onChange={(e) => {
-                    handleInputChangeEdit(e);
-                    setIsEditing(true);
-                  }}
-                  onBlur={() => setIsEditing(false)}
-                  onClick={(e) => e.stopPropagation()}
-                />
-                <input
-                  type="text"
-                  name="status"
-                  value={editedCardData.status}
-                  onChange={(e) => {
-                    handleInputChangeEdit(e);
-                    setIsEditing(true);
-                  }}
-                  onBlur={() => setIsEditing(false)}
-                  onClick={(e) => e.stopPropagation()}
-                />
-                <textarea
-                  name="answer"
-                  value={editedCardData.answer}
-                  onChange={(e) => {
-                    handleInputChangeEdit(e);
-                    setIsEditing(true);
-                  }}
-                  onBlur={() => setIsEditing(false)}
-                  onClick={(e) => e.stopPropagation()}
-                ></textarea>
-                <button onClick={(e) => handleSubmitEdit(e)}>Submit</button>
-              </div>
-            ) : (
-              <>
-                <div
-                  className="card-front"
-                  style={{ opacity: card.isFlipped ? 0 : 1 }}
-                >
-                  <p className="question">{card.question}</p>
-                  <p className="status">Status: {card.status}</p>
-                  <p className="date">
-                    Last Modified:{" "}
-                    {formatModificationDate(card.modificationDate)}
-                  </p>
+  const openEditForm = () => {
+    if (editingCardId !== null) {
+      return (
+        <EditForm
+          editedCardData={editedCardData}
+          handleInputChangeEdit={handleInputChangeEdit}
+          setIsEditing={setIsEditing}
+          handleSubmitEdit={handleSubmitEdit}
+        />
+      );
+    }
+    return null;
+  };
 
-                  <div className="front-buttons">
-                    <button
-                      className="edit-button"
-                      onClick={(e) =>
-                        handleEdit(
-                          e,
-                          card.id,
-                          card.question,
-                          card.status,
-                          card.answer
-                        )
-                      }
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="delete-button"
-                      onClick={(e) => handleDelete(e, card.id)}
-                    >
-                      Delete
-                    </button>
-                  </div>
+  return (
+    <div>
+      {openEditForm()}
+      <div className="cards-grid">
+        {displayedCards.map((card) => (
+          <div
+            key={card.id}
+            className={`card ${card.isFlipped ? "flipped" : ""}`}
+            onClick={() => handleFrontClick(card.id)}
+          >
+            <div className="card-inner">
+              <div
+                className="card-front"
+                style={{ opacity: card.isFlipped ? 0 : 1 }}
+              >
+                <p className="question">{card.question}</p>
+                <p className="status">Status: {card.status}</p>
+                <p className="date">
+                  Last Modified: {formatModificationDate(card.modificationDate)}
+                </p>
+                <div className="front-buttons">
+                  <button
+                    className="edit-button"
+                    onClick={(e) =>
+                      handleEdit(
+                        e,
+                        card.id,
+                        card.question,
+                        card.status,
+                        card.answer
+                      )
+                    }
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={(e) => handleDelete(e, card.id)}
+                  >
+                    Delete
+                  </button>
                 </div>
-                <div
-                  className="card-back"
-                  style={{ opacity: card.isFlipped ? 1 : 0 }}
-                  onClick={() => {
-                    handleBackClick(card.id);
-                  }}
-                >
-                  <p>{card.answer}</p>
-                </div>
-              </>
-            )}
+              </div>
+              <div
+                className="card-back"
+                style={{ opacity: card.isFlipped ? 1 : 0 }}
+                onClick={() => {
+                  handleBackClick(card.id);
+                }}
+              >
+                <p className="answer">{card.answer}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };

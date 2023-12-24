@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/Popup.css";
 
 const Popup = ({
   showPopup,
@@ -19,14 +20,17 @@ const Popup = ({
             placeholder="Enter question"
             required
           />
-          <input
-            type="text"
+          <select
             name="status"
             value={newCardData.status}
             onChange={handleInputChange}
-            placeholder="Enter status"
             required
-          />
+          >
+            <option value="">Choose status</option>
+            <option value="Learned">Learned</option>
+            <option value="Want to Learn">Want to Learn</option>
+            <option value="Noted">Noted</option>
+          </select>
           <input
             type="text"
             name="answer"

@@ -1,4 +1,5 @@
 import React from "react";
+import "../assets/Functionalities.css";
 
 const Functionalities = ({
   handleOpenPopup,
@@ -65,7 +66,7 @@ const Functionalities = ({
         <option>Want to Learn</option>
         <option>Noted</option>
       </select>
-      <select onChange={handleSort}>
+      <select className="select-bar" onChange={handleSort}>
         <option>Sort By</option>
         <option>Date (asc)</option>
         <option>Date (desc)</option>

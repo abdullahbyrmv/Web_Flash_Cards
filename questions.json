@@ -1,11 +1,3 @@
 {
-  "flashcards": [
-    {
-      "id": 1,
-      "question": "Sample Question?",
-      "status": "Noted",
-      "answer": "My Sample Answer",
-      "modificationDate": "2023-12-23T10:14:15.237Z"
-    }
-  ]
+  "flashcards": []
 }
