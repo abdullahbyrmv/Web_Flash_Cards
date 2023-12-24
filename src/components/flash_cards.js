@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Functionalities from "./functionalities";
 import Popup from "./popup";
 import Cards from "./cards";
+import NoCards from "./NoCards";
 import "../assets/FlashCards.css";
 
 const Flashcards = () => {
@@ -222,6 +223,13 @@ const Flashcards = () => {
   const handleSubmitEdit = (e) => {
     e.stopPropagation();
 
+    const { question, answer } = editedCardData;
+
+    if (question.trim() === "" || answer.trim() === "") {
+      window.alert("Please fill in all the fields");
+      return;
+    }
+
     const editedCard = {
       ...flashcards.find((card) => card.id === editingCardId),
       ...editedCardData,
@@ -270,6 +278,7 @@ const Flashcards = () => {
         handleCreateNewCard={handleCreateNewCard}
         newCardData={newCardData}
       />
+      {displayedCards.length === 0 && <NoCards></NoCards>}
       <Cards
         displayedCards={displayedCards}
         handleFrontClick={handleFrontClick}
