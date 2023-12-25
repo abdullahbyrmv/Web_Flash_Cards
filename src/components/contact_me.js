@@ -21,6 +21,15 @@ const Contact = () => {
   const handleSubmit = async (submit) => {
     submit.preventDefault();
 
+    if (
+      messages.subject.trim() === "" ||
+      messages.email.trim() === "" ||
+      messages.content.trim() === ""
+    ) {
+      window.alert("Please fill in all fields before sending.");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3002/messages", {
         method: "POST",
@@ -41,42 +50,42 @@ const Contact = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            id="subject"
-            name="subject"
-            value={messages.subject}
-            onChange={handleInput}
-            required
-            placeholder="Subject..."
-          />
-        </div>
-        <div>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={messages.email}
-            onChange={handleInput}
-            required
-            placeholder="Email..."
-          />
-        </div>
-        <div>
-          <textarea
-            id="content"
-            name="content"
-            value={messages.content}
-            onChange={handleInput}
-            required
-            placeholder="Write your message..."
-          ></textarea>
-        </div>
-        <button type="submit">Send Message</button>
-      </form>
+    <div className="contact-form">
+      <div>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          value={messages.subject}
+          onChange={handleInput}
+          required
+          placeholder="Subject..."
+        />
+      </div>
+      <div>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value={messages.email}
+          onChange={handleInput}
+          required
+          placeholder="Email..."
+        />
+      </div>
+      <div>
+        <textarea
+          id="content"
+          name="content"
+          value={messages.content}
+          onChange={handleInput}
+          required
+          placeholder="Write your message..."
+        ></textarea>
+      </div>
+      <button onClick={handleSubmit} type="submit">
+        Send Message
+      </button>
     </div>
   );
 };
