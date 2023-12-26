@@ -22,6 +22,37 @@ const Flashcards = () => {
   const [selectedStatus, setSelectedStatus] = useState("All Statuses");
   const [editingCardId, setEditingCardId] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [selectedCards, setSelectedCards] = useState([]);
+
+  const handleCheckboxPropagation = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleCheckboxChange = (cardId) => {
+    if (selectedCards.includes(cardId)) {
+      setSelectedCards(selectedCards.filter((id) => id !== cardId));
+    } else {
+      setSelectedCards([...selectedCards, cardId]);
+    }
+  };
+
+  const handleShare = () => {
+    const tickedCards = flashcards.filter((card) =>
+      selectedCards.includes(card.id)
+    );
+
+    const tickedCardsData = tickedCards.map((card) => {
+      const { question, status, answer, modificationDate } = card;
+      return `Question: ${question}\nStatus: ${status}\nAnswer: ${answer}\nModification Date: ${formatModificationDate(
+        modificationDate
+      )}\n\n`;
+    });
+
+    const emailMessage = encodeURIComponent(tickedCardsData.join(""));
+    const link = `mailto:?&body=${emailMessage}`;
+
+    window.location.href = link;
+  };
 
   useEffect(() => {
     fetchFlashcards();
@@ -270,6 +301,7 @@ const Flashcards = () => {
         searchText={searchText}
         setFlashcards={setFlashcards}
         flashcards={flashcards}
+        handleShare={handleShare}
       />
       <Popup
         showPopup={showPopup}
@@ -278,7 +310,7 @@ const Flashcards = () => {
         handleCreateNewCard={handleCreateNewCard}
         newCardData={newCardData}
       />
-      {displayedCards.length === 0 && <NoCards></NoCards>}
+      {displayedCards.length === 0 && <NoCards />}
       <Cards
         displayedCards={displayedCards}
         handleFrontClick={handleFrontClick}
@@ -291,6 +323,9 @@ const Flashcards = () => {
         handleInputChangeEdit={handleInputChangeEdit}
         handleDelete={handleDelete}
         formatModificationDate={formatModificationDate}
+        handleCheckboxChange={handleCheckboxChange}
+        selectedCards={selectedCards}
+        handleCheckboxPropagation={handleCheckboxPropagation}
       />
     </div>
   );

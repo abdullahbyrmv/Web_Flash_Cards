@@ -9,6 +9,7 @@ const Functionalities = ({
   searchText,
   setFlashcards,
   flashcards,
+  handleShare,
 }) => {
   const handleSort = (e) => {
     const sortOption = e.target.value;
@@ -49,6 +50,7 @@ const Functionalities = ({
       <button className="new-card-button" onClick={handleOpenPopup}>
         Create New Card
       </button>
+      <button onClick={handleShare}>Share</button>
       <input
         className="search-bar"
         type="text"

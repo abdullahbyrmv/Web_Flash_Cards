@@ -164,9 +164,22 @@
   max-height: 100%;
 }
 
-.answer{
+.answer {
   text-align: center;
   max-height: 100%;
   max-width: 100%;
   overflow: hidden;
+}
+
+.card-checkbox {
+  position: absolute;
+  top: 0.1px;
+  right: 275px;
+  z-index: 1;
+}
+
+.check-box {
+  width: 30px;
+  cursor: pointer;
+  z-index: 1;
 }

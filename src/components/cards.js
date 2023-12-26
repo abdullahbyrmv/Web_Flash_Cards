@@ -14,6 +14,9 @@ const Cards = ({
   setIsEditing,
   handleDelete,
   formatModificationDate,
+  handleCheckboxChange,
+  selectedCards,
+  handleCheckboxPropagation,
 }) => {
   const openEditForm = () => {
     if (editingCardId !== null) {
@@ -44,6 +47,15 @@ const Cards = ({
                 className="card-front"
                 style={{ opacity: card.isFlipped ? 0 : 1 }}
               >
+                <div className="card-checkbox">
+                  <input
+                    type="checkbox"
+                    className="check-box"
+                    onChange={() => handleCheckboxChange(card.id)}
+                    checked={selectedCards.includes(card.id)}
+                    onClick={(e) => handleCheckboxPropagation(e)}
+                  />
+                </div>
                 <p className="question">{card.question}</p>
                 <p className="status">Status: {card.status}</p>
                 <p className="date">
