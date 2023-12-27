@@ -50,7 +50,9 @@ const Functionalities = ({
       <button className="new-card-button" onClick={handleOpenPopup}>
         Create New Card
       </button>
-      <button onClick={handleShare}>Share</button>
+      <button className="share-button" onClick={handleShare}>
+        Share
+      </button>
       <input
         className="search-bar"
         type="text"

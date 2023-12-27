@@ -53,3 +53,22 @@
 .new-card-button:hover {
   background-color: #4d8c2b;
 }
+
+.share-button {
+  background-color: #386a20;
+  display: flex;
+  justify-items: center;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 10px;
+  height: 40px;
+}
+
+.share-button:hover {
+  background-color: #4d8c2b;
+}

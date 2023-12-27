@@ -41,6 +41,11 @@ const Flashcards = () => {
       selectedCards.includes(card.id)
     );
 
+    if (tickedCards.length === 0) {
+      window.alert("Please select at least 1 card to share");
+      return;
+    }
+
     const tickedCardsData = tickedCards.map((card) => {
       const { question, status, answer, modificationDate } = card;
       return `Question: ${question}\nStatus: ${status}\nAnswer: ${answer}\nModification Date: ${formatModificationDate(
