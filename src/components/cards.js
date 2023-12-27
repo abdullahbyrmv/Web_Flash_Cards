@@ -34,7 +34,7 @@ const Cards = ({
 
   return (
     <div>
-      {openEditForm()}
+      {openEditForm}
       <div className="cards-grid">
         {displayedCards.map((card) => (
           <div
