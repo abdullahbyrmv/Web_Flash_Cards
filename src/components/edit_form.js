@@ -11,7 +11,7 @@ const EditForm = ({
     <div className="blur-background">
       <div className="edit-form-container">
         <div className="edit-form">
-          <label>Question</label>
+          <label className="edit-question">Question</label>
           <input
             className="edit-bar"
             type="text"
@@ -24,7 +24,7 @@ const EditForm = ({
             onBlur={() => setIsEditing(false)}
             onClick={(e) => e.stopPropagation()}
           />
-          <label>Status</label>
+          <label className="edit-status">Status</label>
           <select
             name="status"
             value={editedCardData.status}
@@ -39,7 +39,7 @@ const EditForm = ({
             <option>Want to Learn</option>
             <option>Noted</option>
           </select>
-          <label>Answer</label>
+          <label className="edit-answer">Answer</label>
           <input
             className="edit-bar"
             type="text"
