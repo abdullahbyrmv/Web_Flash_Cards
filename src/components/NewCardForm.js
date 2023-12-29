@@ -1,7 +1,7 @@
 import React from "react";
-import "../assets/Popup.css";
+import "../assets/NewCardForm.css";
 
-const Popup = ({
+const NewCardForm = ({
   showPopup,
   handleClosePopup,
   handleInputChange,
@@ -53,4 +53,4 @@ const Popup = ({
   );
 };
 
-export default Popup;
+export default NewCardForm;

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../assets/ContactMe.css";
 
 const Contact = () => {
-  const [messages, setMessages] = useState({
+  const [message, setMessage] = useState({
     id: "",
     subject: "",
     email: "",
@@ -12,19 +12,19 @@ const Contact = () => {
   const handleInput = (form) => {
     const { name, value } = form.target;
 
-    const form_value = { ...messages };
+    const form_value = { ...message };
     form_value[name] = value;
 
-    setMessages(form_value);
+    setMessage(form_value);
   };
 
   const handleSubmit = async (submit) => {
     submit.preventDefault();
 
     if (
-      messages.subject.trim() === "" ||
-      messages.email.trim() === "" ||
-      messages.content.trim() === ""
+      message.subject.trim() === "" ||
+      message.email.trim() === "" ||
+      message.content.trim() === ""
     ) {
       window.alert("Please fill in all fields before sending.");
       return;
@@ -36,7 +36,7 @@ const Contact = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(messages),
+        body: JSON.stringify(message),
       });
 
       if (response.ok) {
@@ -56,7 +56,7 @@ const Contact = () => {
           type="text"
           id="subject"
           name="subject"
-          value={messages.subject}
+          value={message.subject}
           onChange={handleInput}
           required
           placeholder="Subject..."
@@ -67,7 +67,7 @@ const Contact = () => {
           type="email"
           id="email"
           name="email"
-          value={messages.email}
+          value={message.email}
           onChange={handleInput}
           required
           placeholder="Email..."
@@ -77,7 +77,7 @@ const Contact = () => {
         <textarea
           id="content"
           name="content"
-          value={messages.content}
+          value={message.content}
           onChange={handleInput}
           required
           placeholder="Write your message..."

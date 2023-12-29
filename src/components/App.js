@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./home";
-import Flashcards from "./flash_cards";
-import Contact from "./contact_me";
-import NavigationBar from "./navigation_bar";
+import Home from "./Home";
+import Flashcards from "./FlashCards";
+import Contact from "./ContactMe";
+import NavigationBar from "./NavigationBar";
+import ErrorPage from "./ErrorPage";
 import "../assets/App.css";
 
 const App = () => {
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/flashcards" element={<Flashcards />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </Router>

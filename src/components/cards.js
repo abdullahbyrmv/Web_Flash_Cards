@@ -1,5 +1,5 @@
-import React from "react";
-import EditForm from "./edit_form";
+import React, { useState } from "react";
+import EditForm from "./EditForm";
 import "../assets/Cards.css";
 
 const Cards = ({
@@ -18,23 +18,23 @@ const Cards = ({
   selectedCards,
   handleCheckboxPropagation,
 }) => {
-  const openEditForm = () => {
-    if (editingCardId !== null) {
-      return (
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+
+  const handleOpenEditForm = (e, card) => {
+    handleEdit(e, card.id, card.question, card.status, card.answer);
+    setIsEditFormOpen(true);
+  };
+
+  return (
+    <div>
+      {isEditFormOpen && editingCardId !== null && (
         <EditForm
           editedCardData={editedCardData}
           handleInputChangeEdit={handleInputChangeEdit}
           setIsEditing={setIsEditing}
           handleSubmitEdit={handleSubmitEdit}
         />
-      );
-    }
-    return null;
-  };
-
-  return (
-    <div>
-      {openEditForm}
+      )}
       <div className="cards-grid">
         {displayedCards.map((card) => (
           <div
@@ -64,15 +64,7 @@ const Cards = ({
                 <div className="front-buttons">
                   <button
                     className="edit-button"
-                    onClick={(e) =>
-                      handleEdit(
-                        e,
-                        card.id,
-                        card.question,
-                        card.status,
-                        card.answer
-                      )
-                    }
+                    onClick={(e) => handleOpenEditForm(e, card)}
                   >
                     Edit
                   </button>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Functionalities from "./functionalities";
-import Popup from "./popup";
-import Cards from "./cards";
+import Functionalities from "./Functionalities";
+import NewCardForm from "./NewCardForm";
+import Cards from "./Cards";
 import NoCards from "./NoCards";
 import "../assets/FlashCards.css";
 
@@ -308,7 +308,7 @@ const Flashcards = () => {
         flashcards={flashcards}
         handleShare={handleShare}
       />
-      <Popup
+      <NewCardForm
         showPopup={showPopup}
         handleClosePopup={handleClosePopup}
         handleInputChange={handleInputChange}
