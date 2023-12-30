@@ -2,14 +2,14 @@ import React from "react";
 import "../assets/NewCardForm.css";
 
 const NewCardForm = ({
-  showPopup,
-  handleClosePopup,
+  showNewCardForm,
+  handleCloseNewCardForm,
   handleInputChange,
   handleCreateNewCard,
   newCardData,
 }) => {
   return (
-    showPopup && (
+    showNewCardForm && (
       <div className="popup">
         <div className="popup-content">
           <input
@@ -43,7 +43,10 @@ const NewCardForm = ({
             <button className="new-card-button" onClick={handleCreateNewCard}>
               Submit
             </button>
-            <button className="new-card-button" onClick={handleClosePopup}>
+            <button
+              className="new-card-button"
+              onClick={handleCloseNewCardForm}
+            >
               Close
             </button>
           </div>

@@ -7,7 +7,7 @@ import "../assets/FlashCards.css";
 
 const Flashcards = () => {
   const [flashcards, setFlashcards] = useState([]);
-  const [showPopup, setShowPopup] = useState(false);
+  const [showNewCardForm, setShowNewCardForm] = useState(false);
   const [newCardData, setNewCardData] = useState({
     question: "",
     status: "",
@@ -103,12 +103,12 @@ const Flashcards = () => {
     }
   };
 
-  const handleOpenPopup = () => {
-    setShowPopup(true);
+  const handleOpenNewCardForm = () => {
+    setShowNewCardForm(true);
   };
 
-  const handleClosePopup = () => {
-    setShowPopup(false);
+  const handleCloseNewCardForm = () => {
+    setShowNewCardForm(false);
     setNewCardData({
       question: "",
       status: "",
@@ -116,8 +116,8 @@ const Flashcards = () => {
     });
   };
 
-  const handleInputChange = (popup) => {
-    const { name, value } = popup.target;
+  const handleInputChange = (NewCardForm) => {
+    const { name, value } = NewCardForm.target;
     setNewCardData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -160,7 +160,7 @@ const Flashcards = () => {
       })
       .then(() => {
         fetchFlashcards();
-        setShowPopup(false);
+        setShowNewCardForm(false);
         setNewCardData({
           question: "",
           status: "",
@@ -299,7 +299,7 @@ const Flashcards = () => {
   return (
     <div className="flashcards-container">
       <Functionalities
-        handleOpenPopup={handleOpenPopup}
+        handleOpenNewCardForm={handleOpenNewCardForm}
         setSearchText={setSearchText}
         setSelectedStatus={setSelectedStatus}
         selectedStatus={selectedStatus}
@@ -309,8 +309,8 @@ const Flashcards = () => {
         handleShare={handleShare}
       />
       <NewCardForm
-        showPopup={showPopup}
-        handleClosePopup={handleClosePopup}
+        showNewCardForm={showNewCardForm}
+        handleCloseNewCardForm={handleCloseNewCardForm}
         handleInputChange={handleInputChange}
         handleCreateNewCard={handleCreateNewCard}
         newCardData={newCardData}

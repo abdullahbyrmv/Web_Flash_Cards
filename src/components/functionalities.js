@@ -2,7 +2,7 @@ import React from "react";
 import "../assets/Functionalities.css";
 
 const Functionalities = ({
-  handleOpenPopup,
+  handleOpenNewCardForm,
   setSearchText,
   setSelectedStatus,
   selectedStatus,
@@ -47,7 +47,7 @@ const Functionalities = ({
 
   return (
     <div className="functionalities">
-      <button className="new-card-button" onClick={handleOpenPopup}>
+      <button className="new-card-button" onClick={handleOpenNewCardForm}>
         Create New Card
       </button>
       <button className="share-button" onClick={handleShare}>
