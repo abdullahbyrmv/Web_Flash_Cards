@@ -1,32 +1,91 @@
 import React, { useState } from "react";
 import EditForm from "./EditForm";
+import Card from "./Card";
 import "../assets/Cards.css";
 
 const Cards = ({
+  flashcards,
+  setFlashcards,
   displayedCards,
-  handleFrontClick,
-  handleBackClick,
   handleEdit,
   handleSubmitEdit,
   editingCardId,
   editedCardData,
   handleInputChangeEdit,
-  setIsEditing,
-  handleDelete,
   formatModificationDate,
   handleCheckboxChange,
   selectedCards,
-  handleCheckboxPropagation,
 }) => {
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const handleOpenEditForm = (e, card) => {
     handleEdit(e, card.id, card.question, card.status, card.answer);
     setIsEditFormOpen(true);
   };
 
+  const handleFrontClick = (id) => {
+    if (!isEditing) {
+      const updatedFlashcards = flashcards.map((card) =>
+        card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
+      );
+      setFlashcards(updatedFlashcards);
+    }
+  };
+
+  const handleBackClick = (id) => {
+    if (!isEditing) {
+      const updatedFlashcards = flashcards.map((card) =>
+        card.id === id ? { ...card, isFlipped: !card.isFlipped } : card
+      );
+      setFlashcards(updatedFlashcards);
+    }
+  };
+
+  const handleCheckboxPropagation = (e) => {
+    e.stopPropagation();
+  };
+
+  const handleDelete = (e, id) => {
+    e.stopPropagation();
+
+    const updatedFlashcards = flashcards.filter((card) => card.id !== id);
+
+    fetch(`http://localhost:3001/flashcards/${id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to delete");
+        }
+        return response.json();
+      })
+      .then(() => {
+        setFlashcards(updatedFlashcards);
+      })
+      .catch((error) => {
+        window.alert("Error deleting card: " + error.message);
+      });
+  };
+
   return (
     <div>
+      <div className="cards-grid">
+        {displayedCards.map((card) => (
+          <Card
+            key={card.id}
+            card={card}
+            handleFrontClick={handleFrontClick}
+            handleCheckboxChange={handleCheckboxChange}
+            selectedCards={selectedCards}
+            handleCheckboxPropagation={handleCheckboxPropagation}
+            handleOpenEditForm={handleOpenEditForm}
+            handleDelete={handleDelete}
+            formatModificationDate={formatModificationDate}
+            handleBackClick={handleBackClick}
+          />
+        ))}
+      </div>
       {isEditFormOpen && editingCardId !== null && (
         <EditForm
           editedCardData={editedCardData}
@@ -35,60 +94,6 @@ const Cards = ({
           handleSubmitEdit={handleSubmitEdit}
         />
       )}
-      <div className="cards-grid">
-        {displayedCards.map((card) => (
-          <div
-            key={card.id}
-            className={`card ${card.isFlipped ? "flipped" : ""}`}
-            onClick={() => handleFrontClick(card.id)}
-          >
-            <div className="card-inner">
-              <div
-                className="card-front"
-                style={{ opacity: card.isFlipped ? 0 : 1 }}
-              >
-                <div className="card-checkbox">
-                  <input
-                    type="checkbox"
-                    className="check-box"
-                    onChange={() => handleCheckboxChange(card.id)}
-                    checked={selectedCards.includes(card.id)}
-                    onClick={(e) => handleCheckboxPropagation(e)}
-                  />
-                </div>
-                <p className="question">{card.question}</p>
-                <p className="status">Status: {card.status}</p>
-                <p className="date">
-                  Last Modified: {formatModificationDate(card.modificationDate)}
-                </p>
-                <div className="front-buttons">
-                  <button
-                    className="edit-button"
-                    onClick={(e) => handleOpenEditForm(e, card)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="delete-button"
-                    onClick={(e) => handleDelete(e, card.id)}
-                  >
-                    Delete
-                  </button>
-                </div>
-              </div>
-              <div
-                className="card-back"
-                style={{ opacity: card.isFlipped ? 1 : 0 }}
-                onClick={() => {
-                  handleBackClick(card.id);
-                }}
-              >
-                <p className="answer">{card.answer}</p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 };

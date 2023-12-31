@@ -1,3 +1,18 @@
 {
-  "flashcards": []
+  "flashcards": [
+    {
+      "id": 1,
+      "question": "ytr",
+      "status": "Learned",
+      "answer": "grev",
+      "modificationDate": "2023-12-31T05:44:31.910Z"
+    },
+    {
+      "id": 2,
+      "question": "trb",
+      "status": "Want to Learn",
+      "answer": "ntb",
+      "modificationDate": "2023-12-31T05:44:40.032Z"
+    }
+  ]
 }
