@@ -12,18 +12,23 @@
   flex-direction: column;
   align-items: center;
   width: 400px;
+  height: 500px;
 }
 
-.edit-bar {
+.edit-form {
+  margin-bottom: 50px;
+}
+
+.edit-area {
   outline: none;
 }
 
-.edit-bar:focus {
+.edit-area:focus {
   border-color: #386a20;
   box-shadow: 0 0 5px rgba(56, 106, 32, 0.5);
 }
 
-.edit-form-container input,
+.edit-form-container textarea,
 .edit-form-container select,
 .edit-form-container button {
   width: 100%;
@@ -64,13 +69,4 @@
   z-index: 999;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(5px);
-}
-
-.edit-question {
-}
-
-.edit-status {
-}
-
-.edit-answer {
 }

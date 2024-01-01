@@ -82,7 +82,7 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
   return (
     <div className="popup">
       <div className="popup-content">
-        <input
+        <textarea
           type="text"
           name="question"
           value={newCardData.question}
@@ -101,7 +101,7 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
           <option value="Want to Learn">Want to Learn</option>
           <option value="Noted">Noted</option>
         </select>
-        <input
+        <textarea
           type="text"
           name="answer"
           value={newCardData.answer}

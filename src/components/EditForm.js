@@ -12,8 +12,8 @@ const EditForm = ({
       <div className="edit-form-container">
         <div className="edit-form">
           <label className="edit-question">Question</label>
-          <input
-            className="edit-bar"
+          <textarea
+            className="edit-area"
             type="text"
             name="question"
             value={editedCardData.question}
@@ -40,8 +40,8 @@ const EditForm = ({
             <option>Noted</option>
           </select>
           <label className="edit-answer">Answer</label>
-          <input
-            className="edit-bar"
+          <textarea
+            className="edit-area"
             type="text"
             name="answer"
             value={editedCardData.answer}
@@ -51,7 +51,7 @@ const EditForm = ({
             }}
             onBlur={() => setIsEditing(false)}
             onClick={(e) => e.stopPropagation()}
-          ></input>
+          />
           <button onClick={(e) => handleSubmitEdit(e)}>Submit</button>
         </div>
       </div>

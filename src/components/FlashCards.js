@@ -3,6 +3,7 @@ import Functionalities from "./Functionalities";
 import NewCardForm from "./NewCardForm";
 import Cards from "./Cards";
 import NoCards from "./NoCards";
+import InfiniteScroll from "react-infinite-scroll-component";
 import "../assets/FlashCards.css";
 
 const Flashcards = () => {
@@ -17,6 +18,13 @@ const Flashcards = () => {
   const [selectedStatus, setSelectedStatus] = useState("All Statuses");
   const [editingCardId, setEditingCardId] = useState(null);
   const [selectedCards, setSelectedCards] = useState([]);
+  const [maximumCards, setMaximumCards] = useState(6);
+
+  const loadMoreCards = () => {
+    setTimeout(() => {
+      setMaximumCards((initialCards) => initialCards + 6);
+    }, 1500);
+  };
 
   const handleCheckboxChange = (cardId) => {
     if (selectedCards.includes(cardId)) {
@@ -96,25 +104,27 @@ const Flashcards = () => {
     )}`;
   };
 
-  const displayedCards = flashcards.filter((card) => {
-    const { question, status, answer } = card;
-    const searchValue = searchText.trim().toLowerCase();
+  const displayedCards = flashcards
+    .filter((card) => {
+      const { question, status, answer } = card;
+      const searchValue = searchText.trim().toLowerCase();
 
-    if (selectedStatus !== "All Statuses") {
-      return (
-        (question.toLowerCase().includes(searchValue) ||
+      if (selectedStatus !== "All Statuses") {
+        return (
+          (question.toLowerCase().includes(searchValue) ||
+            status.toLowerCase().includes(searchValue) ||
+            answer.toLowerCase().includes(searchValue)) &&
+          status.toLowerCase() === selectedStatus.toLowerCase()
+        );
+      } else {
+        return (
+          question.toLowerCase().includes(searchValue) ||
           status.toLowerCase().includes(searchValue) ||
-          answer.toLowerCase().includes(searchValue)) &&
-        status.toLowerCase() === selectedStatus.toLowerCase()
-      );
-    } else {
-      return (
-        question.toLowerCase().includes(searchValue) ||
-        status.toLowerCase().includes(searchValue) ||
-        answer.toLowerCase().includes(searchValue)
-      );
-    }
-  });
+          answer.toLowerCase().includes(searchValue)
+        );
+      }
+    })
+    .slice(0, maximumCards);
 
   const handleEdit = (e, id, question, status, answer) => {
     e.stopPropagation();
@@ -187,7 +197,6 @@ const Flashcards = () => {
         flashcards={flashcards}
         handleShare={handleShare}
       />
-      {displayedCards.length === 0 && <NoCards />}
       {showNewCardForm && (
         <NewCardForm
           setShowNewCardForm={setShowNewCardForm}
@@ -195,19 +204,28 @@ const Flashcards = () => {
           fetchFlashcards={fetchFlashcards}
         />
       )}
-      <Cards
-        flashcards={flashcards}
-        setFlashcards={setFlashcards}
-        displayedCards={displayedCards}
-        handleEdit={handleEdit}
-        handleSubmitEdit={handleSubmitEdit}
-        editingCardId={editingCardId}
-        editedCardData={editedCardData}
-        handleInputChangeEdit={handleInputChangeEdit}
-        formatModificationDate={formatModificationDate}
-        handleCheckboxChange={handleCheckboxChange}
-        selectedCards={selectedCards}
-      />
+      {displayedCards.length === 0 && <NoCards />}
+      <InfiniteScroll
+        dataLength={displayedCards.length}
+        next={loadMoreCards}
+        hasMore={displayedCards.length < flashcards.length}
+        loader={<br></br>}
+        endMessage={<br></br>}
+      >
+        <Cards
+          flashcards={flashcards}
+          setFlashcards={setFlashcards}
+          displayedCards={displayedCards}
+          handleEdit={handleEdit}
+          handleSubmitEdit={handleSubmitEdit}
+          editingCardId={editingCardId}
+          editedCardData={editedCardData}
+          handleInputChangeEdit={handleInputChangeEdit}
+          formatModificationDate={formatModificationDate}
+          handleCheckboxChange={handleCheckboxChange}
+          selectedCards={selectedCards}
+        />
+      </InfiniteScroll>
     </div>
   );
 };

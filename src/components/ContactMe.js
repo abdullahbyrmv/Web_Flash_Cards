@@ -30,6 +30,11 @@ const Contact = () => {
       return;
     }
 
+    if (!message.email.trim().includes("@")) {
+      window.alert("Please provide correct email address");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:3002/messages", {
         method: "POST",
@@ -58,7 +63,6 @@ const Contact = () => {
           name="subject"
           value={message.subject}
           onChange={handleInput}
-          required
           placeholder="Subject..."
         />
       </div>
@@ -69,7 +73,6 @@ const Contact = () => {
           name="email"
           value={message.email}
           onChange={handleInput}
-          required
           placeholder="Email..."
         />
       </div>
@@ -79,7 +82,6 @@ const Contact = () => {
           name="content"
           value={message.content}
           onChange={handleInput}
-          required
           placeholder="Write your message..."
         ></textarea>
       </div>
