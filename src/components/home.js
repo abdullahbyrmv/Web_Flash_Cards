@@ -12,10 +12,10 @@ const Home = () => {
   return (
     <div className="home-container">
       <div className="about-me">
-        <h3>Welcome To My React Application</h3>
+        <h3>Welcome to My React Application</h3>
         {
           <p>
-            My name is Abdullah Bayramov and I am 3rd year IT student at ADA
+            My name is Abdullah Bayramov, and I am 3rd year IT student at ADA
             University.
           </p>
         }

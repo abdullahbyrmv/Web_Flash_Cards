@@ -55,39 +55,42 @@ const Contact = () => {
   };
 
   return (
-    <div className="contact-form">
-      <div>
-        <input
-          type="text"
-          id="subject"
-          name="subject"
-          value={message.subject}
-          onChange={handleInput}
-          placeholder="Subject..."
-        />
+    <div>
+      <h1>Contact Me</h1>
+      <div className="contact-form">
+        <div>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={message.subject}
+            onChange={handleInput}
+            placeholder="Subject..."
+          />
+        </div>
+        <div>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={message.email}
+            onChange={handleInput}
+            placeholder="Email..."
+          />
+        </div>
+        <div>
+          <textarea
+            id="content"
+            name="content"
+            value={message.content}
+            onChange={handleInput}
+            placeholder="Write your message..."
+          ></textarea>
+        </div>
+        <button onClick={handleSubmit} type="submit">
+          Send Message
+        </button>
       </div>
-      <div>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={message.email}
-          onChange={handleInput}
-          placeholder="Email..."
-        />
-      </div>
-      <div>
-        <textarea
-          id="content"
-          name="content"
-          value={message.content}
-          onChange={handleInput}
-          placeholder="Write your message..."
-        ></textarea>
-      </div>
-      <button onClick={handleSubmit} type="submit">
-        Send Message
-      </button>
     </div>
   );
 };
