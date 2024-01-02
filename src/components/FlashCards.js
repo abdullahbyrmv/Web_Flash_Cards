@@ -40,12 +40,17 @@ const Flashcards = () => {
 
     const tickedCardsData = tickedCards.map((card) => {
       const { question, status, answer, modificationDate } = card;
-      return `Question: ${question}\nStatus: ${status}\nAnswer: ${answer}\nModification Date: ${formatModificationDate(
-        modificationDate
-      )}\n\n`;
+      return {
+        question,
+        status,
+        answer,
+        modificationDate: formatModificationDate(modificationDate),
+      };
     });
 
-    const emailMessage = encodeURIComponent(tickedCardsData.join(""));
+    const emailMessage = encodeURIComponent(
+      JSON.stringify(tickedCardsData, null, 2)
+    );
     const link = `mailto:?&body=${emailMessage}`;
 
     window.location.href = link;

@@ -54,6 +54,7 @@
 .popup-content textarea {
   width: 500px;
   height: 30px;
+  resize: none;
 }
 
 .popup-content textarea,
@@ -72,4 +73,8 @@
 
 .popup-content textarea {
   height: 75px;
+}
+
+.new-card-textarea-answer {
+  margin-top: 10px;
 }

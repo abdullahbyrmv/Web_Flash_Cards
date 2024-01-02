@@ -88,13 +88,11 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
           value={newCardData.question}
           onChange={handleInputChange}
           placeholder="Enter question"
-          required
         />
         <select
           name="status"
           value={newCardData.status}
           onChange={handleInputChange}
-          required
         >
           <option value="">Choose status</option>
           <option value="Learned">Learned</option>
@@ -102,12 +100,12 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
           <option value="Noted">Noted</option>
         </select>
         <textarea
+          className="new-card-textarea-answer"
           type="text"
           name="answer"
           value={newCardData.answer}
           onChange={handleInputChange}
           placeholder="Enter answer"
-          required
         />
         <div className="popup-buttons">
           <button className="new-card-button" onClick={handleCreateNewCard}>
