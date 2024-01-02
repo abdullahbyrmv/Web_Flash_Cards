@@ -1,4 +1,4 @@
-const projectsInfo = [
+const ProjectsInfo = [
   {
     id: 1,
     title: "Personal Website",
@@ -21,4 +21,4 @@ const projectsInfo = [
   },
 ];
 
-export default projectsInfo;
+export default ProjectsInfo;

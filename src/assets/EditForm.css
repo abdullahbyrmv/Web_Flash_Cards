@@ -40,6 +40,11 @@
   font-size: 16px;
 }
 
+.edit-form-container textarea {
+  height: 150px;
+  resize: none;
+}
+
 .edit-form-container select {
   background-repeat: no-repeat;
   background-position: right 10px center;

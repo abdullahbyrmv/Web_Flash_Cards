@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import projectsInfo from "../projectsInfo";
+import projectsInfo from "../ProjectsInfo";
+import Project from "./Project";
 import "../assets/Home.css";
 
 const Home = () => {
@@ -24,11 +25,12 @@ const Home = () => {
       <div className="projects">
         {projects.map((project) => (
           <div key={project.id} className="project-div">
-            <h4 className="project-title">{project.title}</h4>
-            <p className="project-description">{project.description}</p>
-            <a href={project.source} target="_blank" rel="noopener noreferrer">
-              <button className="view-button">View Project</button>
-            </a>
+            <Project
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              source={project.source}
+            />
           </div>
         ))}
       </div>

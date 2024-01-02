@@ -46,6 +46,12 @@ const Contact = () => {
 
       if (response.ok) {
         window.alert("Message sent successfully!");
+        setMessage({
+          id: "",
+          subject: "",
+          email: "",
+          content: "",
+        });
       } else {
         window.alert("Failed to send message!");
       }
@@ -56,10 +62,11 @@ const Contact = () => {
 
   return (
     <div>
-      <h1>Contact Me</h1>
+      <h1 className="header">Contact Me</h1>
       <div className="contact-form">
         <div>
           <input
+            className="contact-me-input"
             type="text"
             id="subject"
             name="subject"
@@ -70,6 +77,7 @@ const Contact = () => {
         </div>
         <div>
           <input
+            className="contact-me-input"
             type="email"
             id="email"
             name="email"
@@ -80,6 +88,7 @@ const Contact = () => {
         </div>
         <div>
           <textarea
+            className="contact-me-textarea"
             id="content"
             name="content"
             value={message.content}
@@ -87,7 +96,11 @@ const Contact = () => {
             placeholder="Write your message..."
           ></textarea>
         </div>
-        <button onClick={handleSubmit} type="submit">
+        <button
+          className="contact-me-button"
+          onClick={handleSubmit}
+          type="submit"
+        >
           Send Message
         </button>
       </div>

@@ -9,14 +9,8 @@ import "../assets/FlashCards.css";
 const Flashcards = () => {
   const [flashcards, setFlashcards] = useState([]);
   const [showNewCardForm, setShowNewCardForm] = useState(false);
-  const [editedCardData, setEditedCardData] = useState({
-    question: "",
-    status: "",
-    answer: "",
-  });
   const [searchText, setSearchText] = useState("");
   const [selectedStatus, setSelectedStatus] = useState("All Statuses");
-  const [editingCardId, setEditingCardId] = useState(null);
   const [selectedCards, setSelectedCards] = useState([]);
   const [maximumCards, setMaximumCards] = useState(6);
 
@@ -126,65 +120,6 @@ const Flashcards = () => {
     })
     .slice(0, maximumCards);
 
-  const handleEdit = (e, id, question, status, answer) => {
-    e.stopPropagation();
-    setEditingCardId(id);
-    setEditedCardData({
-      question: question,
-      status: status,
-      answer: answer,
-    });
-  };
-
-  const handleInputChangeEdit = (e) => {
-    e.stopPropagation();
-    const { name, value } = e.target;
-    setEditedCardData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
-  const handleSubmitEdit = (e) => {
-    e.stopPropagation();
-
-    const { question, answer } = editedCardData;
-
-    if (question.trim() === "" || answer.trim() === "") {
-      window.alert("Please fill in all the fields");
-      return;
-    }
-
-    const editedCard = {
-      ...flashcards.find((card) => card.id === editingCardId),
-      ...editedCardData,
-      modificationDate: new Date().toISOString(),
-    };
-
-    const { isFlipped, ...editedCardInfo } = editedCard;
-
-    fetch(`http://localhost:3001/flashcards/${editingCardId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(editedCardInfo),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Failed to update");
-        }
-        return response.json();
-      })
-      .then(() => {
-        fetchFlashcards();
-        setEditingCardId(null);
-      })
-      .catch((error) => {
-        window.alert("Error updating card: " + error.message);
-      });
-  };
-
   return (
     <div className="flashcards-container">
       <Functionalities
@@ -216,11 +151,7 @@ const Flashcards = () => {
           flashcards={flashcards}
           setFlashcards={setFlashcards}
           displayedCards={displayedCards}
-          handleEdit={handleEdit}
-          handleSubmitEdit={handleSubmitEdit}
-          editingCardId={editingCardId}
-          editedCardData={editedCardData}
-          handleInputChangeEdit={handleInputChangeEdit}
+          fetchFlashcards={fetchFlashcards}
           formatModificationDate={formatModificationDate}
           handleCheckboxChange={handleCheckboxChange}
           selectedCards={selectedCards}

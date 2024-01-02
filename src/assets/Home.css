@@ -39,30 +39,6 @@
   height: 300px;
 }
 
-.project-title {
-  font-size: 30px;
-  margin-bottom: 10px;
-}
-
-.project-description {
-  font-size: 20px;
-}
-
 .project-div:hover {
   background-color: #92cc74;
-}
-
-.view-button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  background-color: #386a20;
-  color: white;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.view-button:hover {
-  background-color: #4d8c2b;
 }
