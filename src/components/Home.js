@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import projectsInfo from "../ProjectsInfo";
+import ProjectsInfo from "../ProjectsInfo";
 import Project from "./Project";
 import "../assets/Home.css";
 
@@ -7,7 +7,7 @@ const Home = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    setProjects(projectsInfo);
+    setProjects(ProjectsInfo);
   }, []);
 
   return (
