@@ -13,7 +13,7 @@ This will download all of the dependencies inside of package.json. </li>
 <li>After the installation process, you can start application. Open the terminal and type command: <b>"npm start"</b>.<br>
 This command will start the application in the default port 3000. You can open project in <b>"http://localhost:3000/Web_Flash_Cards"</b>.</li>
 <li>After that, open a new terminal and type command: <b>"json-server questions.json --port 3001"</b> to start JSON server for flashcards.</li>
-<li>After that, type command: <b>"json-server messages.json --port 3002"</b> to start JSON server for messages that come from contact me form.</li>
+<li>After that, open a new terminal and type command: <b>"json-server messages.json --port 3002"</b> to start JSON server for messages that come from contact me form.</li>
 </ol>
 
 Now that you have started the application, you can see my other projects in <b>"Home"</b> page. In the <b>"Flashcards"</b> page, you can edit the available flashcards or delete them and create new flashcards of your own choice. In addition, you can share, filter, sort, and search the flashcards. Moreover, you can send message from <b>"Contact me"</b> page and all the sent mesages will be stored in <b>"messages.json"</b>.
