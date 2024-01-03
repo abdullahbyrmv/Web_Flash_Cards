@@ -14,6 +14,10 @@ const Flashcards = () => {
   const [selectedCards, setSelectedCards] = useState([]);
   const [maximumCards, setMaximumCards] = useState(6);
 
+  useEffect(() => {
+    fetchFlashcards();
+  }, []);
+
   const loadMoreCards = () => {
     setTimeout(() => {
       setMaximumCards((initialCards) => initialCards + 6);
@@ -55,10 +59,6 @@ const Flashcards = () => {
 
     window.location.href = link;
   };
-
-  useEffect(() => {
-    fetchFlashcards();
-  }, []);
 
   const fetchFlashcards = () => {
     fetch("http://localhost:3001/flashcards")
