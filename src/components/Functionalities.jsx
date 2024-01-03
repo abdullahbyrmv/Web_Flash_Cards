@@ -56,7 +56,7 @@ const Functionalities = ({
       <input
         className="search-bar"
         type="text"
-        placeholder="Search by question, status or answer."
+        placeholder="Search cards by question, status, answer."
         value={searchText}
         onChange={(e) => setSearchText(e.target.value)}
       />

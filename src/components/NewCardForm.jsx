@@ -89,7 +89,7 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
           name="question"
           value={newCardData.question}
           onChange={handleInputChange}
-          placeholder="Enter question"
+          placeholder="Enter question for new card"
         />
         <select
           name="status"
@@ -107,7 +107,7 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
           name="answer"
           value={newCardData.answer}
           onChange={handleInputChange}
-          placeholder="Enter answer"
+          placeholder="Enter answer for new card"
         />
         <div className="popup-buttons">
           <button className="new-card-button" onClick={handleCreateNewCard}>
