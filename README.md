@@ -1,70 +1,19 @@
-# Getting Started with Create React App
+### [Live Demo of Project](https://abdullahbyrmv.github.io/Web_Flash_Cards/)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>This is a React App like "Quizlet". Follow these steps to set up and run the application:</h2>
 
-## Available Scripts
+<ol>
+<li>You will need to download Node.js. All React applications require Node.js. You can download Node.js according to your own operating system from this <a href="https://nodejs.org/en/download">link</a>.
+</li>
+<li>Clone the repository by using the command <b>"git clone https://github.com/abdullahbyrmv/Web_Flash_Cards.git"</b> or download the source code as zip file.</li>
+<li>Open the project in your editor (VisualStudio Code (VSCode) etc.)</li>
+<li>Open the terminal and write command:
+<b>"npm install"</b><br>
+This will download all of the dependencies inside of package.json. </li>
+<li>After the installation process, you can start application. Open the terminal and type command: <b>"npm start"</b>.<br>
+This command will start the application in the default port 3000. You can open project in <b>"http://localhost:3000/Web_Flash_Cards"</b>.</li>
+<li>After that, open a new terminal and type command: <b>"json-server questions.json --port 3001"</b> to start JSON server for flashcards.</li>
+<li>After that, type command: <b>"json-server messages.json --port 3002"</b> to start JSON server for messages that come from contact me form.</li>
+</ol>
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Now that you have started the application, you can see my other projects in <b>"Home"</b> page. In the <b>"Flashcards"</b> page, you can edit the available flashcards or delete them and create new flashcards of your own choice. In addition, you can share, filter, sort, and search the flashcards. Moreover, you can send message from <b>"Contact me"</b> page and all the sent mesages will be stored in <b>"messages.json"</b>.
