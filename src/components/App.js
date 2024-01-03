@@ -13,7 +13,7 @@ const App = () => {
       <div className="content">
         <NavigationBar />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/Web_Flash_Cards" element={<Home />} />
           <Route path="/flashcards" element={<Flashcards />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<ErrorPage />} />

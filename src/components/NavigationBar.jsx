@@ -7,7 +7,7 @@ const NavigationBar = () => {
     <nav>
       <ul className="navigation_list">
         <li>
-          <NavLink to="/" activeclassname="active">
+          <NavLink to="/Web_Flash_Cards" activeclassname="active">
             Home
           </NavLink>
         </li>
