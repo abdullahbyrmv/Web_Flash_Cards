@@ -2,107 +2,122 @@
   "flashcards": [
     {
       "id": 1,
-      "question": "ytr",
-      "status": "Learned",
-      "answer": "grev",
-      "modificationDate": "2023-12-31T05:44:31.910Z"
+      "question": "What does TCP stand for?",
+      "answer": "Transmission Control Protocol.",
+      "modificationDate": "2022-12-15T10:30:00Z",
+      "status": "Noted"
+    },
+    {
+      "id": 2,
+      "question": "Define UDP.",
+      "answer": "User Datagram Protocol is a connectionless protocol without error checking.",
+      "modificationDate": "2023-12-14T09:45:00Z",
+      "status": "Learned"
     },
     {
       "id": 3,
-      "question": "dsad",
-      "status": "Want to Learn",
-      "answer": "hyit",
-      "modificationDate": "2023-12-31T14:05:32.925Z"
+      "question": "What is the main difference between TCP and UDP?",
+      "answer": "TCP provides reliable, ordered, and error-checked delivery of data, while UDP does not guarantee delivery and is faster.",
+      "modificationDate": "2023-12-13T14:00:00Z",
+      "status": "Want to Learn"
     },
     {
       "id": 4,
-      "question": "ytl;",
-      "status": "Want to Learn",
-      "answer": "hkyrkg",
-      "modificationDate": "2023-12-31T14:05:39.338Z"
+      "question": "What does TCP use to guarantee reliable data transmission?",
+      "answer": "TCP uses sequencing, acknowledgments, and retransmissions to ensure reliable data delivery.",
+      "modificationDate": "2023-12-12T11:20:00Z",
+      "status": "Learned"
     },
     {
       "id": 5,
-      "question": "hropbm;f",
-      "status": "Noted",
-      "answer": "betbo[qep",
-      "modificationDate": "2023-12-31T14:05:46.980Z"
+      "question": "How does UDP differ from TCP in terms of overhead?",
+      "answer": "UDP has less overhead because it lacks features like sequencing, acknowledgment, and error-checking mechanisms present in TCP.",
+      "modificationDate": "2023-12-11T08:30:00Z",
+      "status": "Noted"
     },
     {
       "id": 6,
-      "question": "frww",
-      "status": "Learned",
-      "answer": "fijwenp;",
-      "modificationDate": "2023-12-31T14:05:54.104Z"
+      "question": "Which protocol is better suited for real-time applications like video streaming, TCP or UDP?",
+      "answer": "UDP is often preferred due to its lower latency and faster transmission, suitable for real-time applications.",
+      "modificationDate": "2023-12-10T15:45:00Z",
+      "status": "Learned"
     },
     {
       "id": 7,
-      "question": "grw0kofs",
-      "status": "Noted",
-      "answer": "grwips",
-      "modificationDate": "2023-12-31T14:06:00.424Z"
+      "question": "Does TCP or UDP provide more robust error handling?",
+      "answer": "TCP provides more robust error handling through its acknowledgment and retransmission mechanisms.",
+      "modificationDate": "2023-12-16T10:00:02Z",
+      "status": "Noted"
     },
     {
       "id": 8,
-      "question": "dqw0ewo",
-      "status": "Learned",
-      "answer": "fqkew[",
-      "modificationDate": "2023-12-31T14:06:13.730Z"
+      "question": "In TCP, how are out-of-order segments handled?",
+      "answer": "TCP reorders out-of-order segments before delivering them to the application layer.",
+      "modificationDate": "2021-10-09T10:00:02Z",
+      "status": "Learned"
     },
     {
       "id": 9,
-      "question": "ok",
+      "question": "What type of applications might benefit from using UDP over TCP?",
+      "answer": "Applications that prioritize speed and can tolerate occasional data loss, such as online multiplayer games or real-time audio/video conferencing, may benefit from UDP.",
+      "modificationDate": "2022-11-14T10:00:02Z",
+      "status": "Want to Learn"
+    },
+    {
+      "id": 10,
+      "question": "What is PDU?",
       "status": "Learned",
-      "answer": "OK",
-      "modificationDate": "2024-01-02T20:21:29.835Z"
+      "answer": "Protocol Data Unit",
+      "modificationDate": "2023-12-18T15:29:58.003Z"
+    },
+    {
+      "id": 11,
+      "question": "What is OSI?",
+      "status": "Noted",
+      "answer": "Open Systems Interconnection",
+      "modificationDate": "2023-12-18T15:38:43.608Z"
     },
     {
       "id": 12,
-      "question": "dafrsrf",
-      "status": "Want to Learn",
-      "answer": "gregre",
-      "modificationDate": "2023-12-31T15:08:41.330Z"
+      "question": "What is IP",
+      "status": "Learned",
+      "answer": "Internet Protocol",
+      "modificationDate": "2023-12-18T15:51:52.024Z"
     },
     {
       "id": 13,
-      "question": "My Test Edit",
-      "status": "Noted",
-      "answer": "Just for fun of test",
-      "modificationDate": "2024-01-02T15:32:42.297Z"
-    },
-    {
-      "id": 22,
-      "question": "dsadas",
+      "question": "How many layers do OSI have?",
       "status": "Learned",
-      "answer": "pkiupumhg",
-      "modificationDate": "2024-01-02T13:53:23.059Z"
+      "answer": "7",
+      "modificationDate": "2023-12-18T19:17:49.166Z"
     },
     {
-      "id": 24,
-      "question": "Everything",
-      "status": "Want to Learn",
-      "answer": "Error 404 (Not Found)"
-    },
-    {
-      "id": 25,
-      "question": "Happy",
-      "status": "Learned",
-      "answer": "Just For funnnn",
-      "modificationDate": "2024-01-02T20:16:26.135Z"
-    },
-    {
-      "id": 26,
-      "question": "My question",
-      "status": "Want to Learn",
-      "answer": "Test Answerrefd",
-      "modificationDate": "2024-01-02T20:16:32.381Z"
-    },
-    {
-      "id": 27,
-      "question": "Test",
+      "id": 14,
+      "question": "How many layers do TCP/IP have?",
       "status": "Noted",
-      "answer": "Testttttttttttttttttttttttttttttttttt",
-      "modificationDate": "2024-01-02T20:16:12.182Z"
+      "answer": "4",
+      "modificationDate": "2023-12-18T19:22:34.212Z"
+    },
+    {
+      "id": 15,
+      "question": "3rd Layer in TCP/IP",
+      "status": "Learned",
+      "answer": "Internet ",
+      "modificationDate": "2023-12-19T05:56:36.999Z"
+    },
+    {
+      "id": 16,
+      "question": "Which layer device the Router is?",
+      "status": "Learned",
+      "answer": "3",
+      "modificationDate": "2023-12-20T05:11:21.211Z"
+    },
+    {
+      "id": 17,
+      "question": "Which layer device the Switch is?",
+      "status": "Noted",
+      "answer": "Could be 2 or 3",
+      "modificationDate": "2023-12-20T05:55:54.668Z"
     }
   ]
 }

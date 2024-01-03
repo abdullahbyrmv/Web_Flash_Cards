@@ -48,17 +48,33 @@ const Cards = ({
   const handleSubmitEdit = (e) => {
     e.stopPropagation();
 
-    const { question, answer } = editedCardData;
+    const { question, answer, status } = editedCardData;
 
     if (question.trim() === "" || answer.trim() === "") {
       window.alert("Please fill in all the fields");
       return;
     }
 
+    const originalCardData = flashcards.find(
+      (card) => card.id === editingCardId
+    );
+
+    let isEdited = false;
+
+    if (
+      originalCardData.question.trim() !== question.trim() ||
+      originalCardData.status !== status ||
+      originalCardData.answer.trim() !== answer.trim()
+    ) {
+      isEdited = true;
+    }
+
     const editedCard = {
-      ...flashcards.find((card) => card.id === editingCardId),
+      ...originalCardData,
       ...editedCardData,
-      modificationDate: new Date().toISOString(),
+      modificationDate: isEdited
+        ? new Date().toISOString()
+        : originalCardData.modificationDate,
     };
 
     const { isFlipped, ...editedCardInfo } = editedCard;
@@ -72,7 +88,7 @@ const Cards = ({
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error("Failed to update");
+          throw new Error("Failed to edit");
         }
         return response.json();
       })
@@ -81,7 +97,7 @@ const Cards = ({
         setEditingCardId(null);
       })
       .catch((error) => {
-        window.alert("Error updating card: " + error.message);
+        window.alert("Error editing card: " + error.message);
       });
   };
 

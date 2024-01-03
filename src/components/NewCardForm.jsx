@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../assets/NewCardForm.css";
 
 const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
@@ -7,6 +7,15 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
     status: "",
     answer: "",
   });
+  const [nextId, setNextId] = useState(1);
+
+  useEffect(() => {
+    const maxId = flashcards.reduce(
+      (maxId, card) => Math.max(maxId, card.id),
+      0
+    );
+    setNextId(maxId + 1);
+  }, [flashcards]);
 
   const handleInputChange = (NewCardForm) => {
     const { name, value } = NewCardForm.target;
@@ -25,12 +34,6 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
     });
   };
 
-  const findMaxId = (cards) => {
-    return cards.reduce((maxId, card) => {
-      return card.id > maxId ? card.id : maxId;
-    }, 0);
-  };
-
   const handleCreateNewCard = () => {
     if (
       newCardData.question.trim() === "" ||
@@ -44,10 +47,8 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
       return;
     }
 
-    const maxId = findMaxId(flashcards);
-
     const newCard = {
-      id: maxId + 1,
+      id: nextId,
       ...newCardData,
       modificationDate: new Date().toISOString(),
     };
@@ -73,6 +74,7 @@ const NewCardForm = ({ setShowNewCardForm, flashcards, fetchFlashcards }) => {
           status: "",
           answer: "",
         });
+        setNextId((prevId) => prevId + 1);
       })
       .catch((error) => {
         window.alert("Error adding new card:" + error.message);
