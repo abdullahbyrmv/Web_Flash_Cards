@@ -100,10 +100,10 @@
     },
     {
       "id": 15,
-      "question": "3rd Layer in TCP/IP",
+      "question": "3rd Layer in TCP/IP?",
       "status": "Learned",
-      "answer": "Internet ",
-      "modificationDate": "2024-01-03T09:24:36.029Z"
+      "answer": "Internet",
+      "modificationDate": "2024-01-03T13:28:40.097Z"
     },
     {
       "id": 16,
@@ -111,13 +111,6 @@
       "status": "Learned",
       "answer": "3",
       "modificationDate": "2023-12-20T05:11:21.211Z"
-    },
-    {
-      "id": 17,
-      "question": "Which layer device the Switch is?",
-      "status": "Noted",
-      "answer": "Could be 2 or 3",
-      "modificationDate": "2023-12-20T05:55:54.668Z"
     }
   ]
 }

@@ -1,10 +1,4 @@
 {
   "messages": [
-    {
-      "id": 1,
-      "subject": "Hello",
-      "email": "test@mail.ru",
-      "content": "Contact me test"
-    }
   ]
 }
